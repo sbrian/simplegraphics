@@ -18,6 +18,7 @@ public class View {
     }
 
     private Frame getFrame() {
+	if ( frame != null ) return frame;
 	frame = new JFrame();
 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
