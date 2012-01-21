@@ -42,15 +42,55 @@ public class RealPositions {
 	return (maxY - minY + 1) * pixelsPerUnit;
     }
 
+    public int getRealXAxis() {
+	return getRealX(0);
+    }
+    
+    public Point getRealXAxisPoint(int y) {
+	return new Point(getRealXAxis(), getRealY(y));
+    }
+    
+    public int getRealYAxis() {
+	return getRealY(0);
+    }
+    
+    public Point getRealYAxisPoint(int x) {
+	return new Point(getRealX(x), getRealYAxis());
+    }
+    
+    public int getRealX(int x) {
+	return ((int) x - minX) * pixelsPerUnit; 
+    }
+    
     public int getRealXFromPoint(Point p) {
-	return ((int) p.getX() - minX) * pixelsPerUnit;
+	return getRealX(p.x);
     }
 
+    public int getRealY(int y) {
+	return (maxY - (int) y) * pixelsPerUnit;
+    }
+    
     public int getRealYFromPoint(Point p) {
-	return ((int) p.getY() - minY) * pixelsPerUnit;
+	return getRealY(p.y);
     }
 
     public int getPixelsPerUnit() {
 	return pixelsPerUnit;
+    }
+    
+    public int getMinX() {
+	return minX;
+    }
+    
+    public int getMinY() {
+	return minY;
+    }
+    
+    public int getMaxX() {
+	return maxX;
+    }
+    
+    public int getMaxY() {
+	return maxY;
     }
 }

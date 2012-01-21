@@ -21,6 +21,19 @@ public class Panel extends JPanel {
 	this.viewSize = viewSize;
     }
 
+    private void drawGrid(Graphics g, RealPositions pos) {
+	
+	for ( int xx=pos.getMinX(); xx<=pos.getMaxX(); xx++) {
+	    Point p = pos.getRealYAxisPoint(xx);
+	    g.drawLine(p.x, p.y, p.x, p.y);
+	}
+	
+	for ( int yy=pos.getMinY(); yy<=pos.getMaxY(); yy++) {
+	    Point p = pos.getRealXAxisPoint(yy);
+	    g.drawLine(p.x, p.y, p.x, p.y);
+	}
+    }
+    
     private void render(Graphics g) {
 	BufferedImage image = new BufferedImage(viewSize.getRealWidth(),
 		viewSize.getRealHeight(), BufferedImage.TYPE_INT_ARGB);
@@ -28,11 +41,15 @@ public class Panel extends JPanel {
 	bg.setColor(Color.WHITE);
 	bg.fillRect(0, 0, viewSize.getRealWidth(), viewSize.getRealHeight());
 	bg.setColor(Color.BLACK);
+	
+	drawGrid(bg, viewSize);
+	
 	for (Point point : points) {
 	    int x = viewSize.getRealXFromPoint(point);
 	    int y = viewSize.getRealYFromPoint(point);
 	    int pxPerUnit = viewSize.getPixelsPerUnit();
-	    bg.fillArc(x, y, pxPerUnit, pxPerUnit, 0, 360);
+	    //bg.fillArc(x, y, pxPerUnit, pxPerUnit, 0, 360);
+	    bg.drawLine(x, y, x, y);
 	}
 	g.drawImage(image, 0, 0, null);
 	bg.dispose();
