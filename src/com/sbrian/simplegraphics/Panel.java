@@ -4,8 +4,8 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.image.BufferedImage;
-import java.util.LinkedHashSet;
 import java.util.Set;
+import java.util.concurrent.CopyOnWriteArraySet;
 
 import javax.swing.JPanel;
 
@@ -14,7 +14,7 @@ public class Panel extends JPanel {
     private static final long serialVersionUID = -4537539284750052513L;
     private RealPositions viewSize = null;
 
-    private Set<Point> points = new LinkedHashSet<Point>();
+    private Set<Point> points = new CopyOnWriteArraySet<Point>();
 
     public Panel(RealPositions viewSize) {
 	super();
