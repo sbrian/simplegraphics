@@ -47,7 +47,7 @@ public class Panel extends JPanel {
 	for (Point point : points) {
 	    int x = viewSize.getRealXFromPoint(point);
 	    int y = viewSize.getRealYFromPoint(point);
-	    int pxPerUnit = viewSize.getPixelsPerUnit();
+	    float pxPerUnit = viewSize.getPixelsPerUnit();
 	    //bg.fillArc(x, y, pxPerUnit, pxPerUnit, 0, 360);
 	    bg.drawLine(x, y, x, y);
 	}

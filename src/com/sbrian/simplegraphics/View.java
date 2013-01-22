@@ -16,7 +16,11 @@ public class View {
     public View() {
 	this.viewSize = new RealPositions();
     }
-
+    
+    public View(int minX, int maxX, int minY, int maxY, float pixelsPerUnit) {
+	this.viewSize = new RealPositions(minX, maxX, minY, maxY, pixelsPerUnit);
+    }
+    
     private Frame getFrame() {
 	if ( frame != null ) return frame;
 	frame = new JFrame();

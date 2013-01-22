@@ -9,20 +9,20 @@ public class RealPositions {
     public static int DEFAULT_MAX_Y = 100;
     public static int DEFAULT_MIN_X = -100;
     public static int DEFAULT_MIN_Y = -100;
-    public static int DEFAULT_PX_PER_UNIT = 3;
+    public static float DEFAULT_PX_PER_UNIT = 3;
 
     private int maxX;
     private int maxY;
     private int minX;
     private int minY;
-    private int pixelsPerUnit;
+    private float pixelsPerUnit;
 
     public RealPositions() {
 	this(DEFAULT_MIN_X, DEFAULT_MAX_X, DEFAULT_MIN_Y, DEFAULT_MAX_Y,
 		DEFAULT_PX_PER_UNIT);
     }
 
-    public RealPositions(int minX, int maxX, int minY, int maxY, int pixelsPerUnit) {
+    public RealPositions(int minX, int maxX, int minY, int maxY, float pixelsPerUnit) {
 	this.minX = minX;
 	this.maxX = maxX;
 	this.minY = minY;
@@ -35,11 +35,11 @@ public class RealPositions {
     }
 
     public int getRealWidth() {
-	return (maxX - minX + 1) * pixelsPerUnit;
+	return (int) Math.floor( (maxX - minX + 1) * pixelsPerUnit);
     }
 
     public int getRealHeight() {
-	return (maxY - minY + 1) * pixelsPerUnit;
+	return (int) Math.floor( (maxY - minY + 1) * pixelsPerUnit);
     }
 
     public int getRealXAxis() {
@@ -59,7 +59,7 @@ public class RealPositions {
     }
     
     public int getRealX(int x) {
-	return ((int) x - minX) * pixelsPerUnit; 
+	return (int)( ((int) x - minX) * pixelsPerUnit); 
     }
     
     public int getRealXFromPoint(Point p) {
@@ -67,14 +67,14 @@ public class RealPositions {
     }
 
     public int getRealY(int y) {
-	return (maxY - (int) y) * pixelsPerUnit;
+	return (int)( (maxY - (int) y) * pixelsPerUnit);
     }
     
     public int getRealYFromPoint(Point p) {
 	return getRealY(p.y);
     }
 
-    public int getPixelsPerUnit() {
+    public float getPixelsPerUnit() {
 	return pixelsPerUnit;
     }
     
